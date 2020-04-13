@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Rollerpoker</string>
+    <string name="dawnload_video">Загрузить видео</string>
+    <string name="tenGold">"10 очков "</string>
+    <string name="goldResult">"Итого 30 очков "</string>
+    <string name="loginius_gays">Loginius gays</string>
+    <string name="email">email</string>
+    <string name="pass">password</string>
+</resources>

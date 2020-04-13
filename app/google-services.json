@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1092251583776",
+    "firebase_url": "https://saymewhy-rollerpoker.firebaseio.com",
+    "project_id": "saymewhy-rollerpoker",
+    "storage_bucket": "saymewhy-rollerpoker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092251583776:android:6b83e49af7ac588b354345",
+        "android_client_info": {
+          "package_name": "com.saymewhy.forfriend.rollerpoker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092251583776-qpl8jp1g8t46ojq2ieaui45erde5vatu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdcn7I84_aH5Y0fDiayN8yMtziLWpf-uE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092251583776-qpl8jp1g8t46ojq2ieaui45erde5vatu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
