@@ -9,4 +9,5 @@ interface DB {
     fun updateTableState(state:Int)
     fun updateTimer(time: Long)
     fun logaut()
+    fun getCard()
 }

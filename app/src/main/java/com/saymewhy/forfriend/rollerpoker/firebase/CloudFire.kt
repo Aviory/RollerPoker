@@ -6,12 +6,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.saymewhy.forfriend.rollerpoker.entity.Table
 import com.saymewhy.forfriend.rollerpoker.interfaces.DB
+import com.saymewhy.forfriend.rollerpoker.interfaces.GameCenterInterface
 import com.saymewhy.forfriend.rollerpoker.interfaces.MainView
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
-class CloudFire(val mainView: MainView):DB {
+class CloudFire(val mainView: MainView,val gameCenter: GameCenterInterface) : DB {
 
     private val db = FirebaseFirestore.getInstance()
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -40,7 +42,7 @@ class CloudFire(val mainView: MainView):DB {
     }
 
 
-    override fun updateTimer(time:Long) {
+    override fun updateTimer(time: Long) {
         val data = hashMapOf("timeNextState" to time)
 
         db.collection(TABLES).document(TEST_TABLE_NAME)
@@ -117,12 +119,29 @@ class CloudFire(val mainView: MainView):DB {
         mainView.setTable(table)
     }
 
-    override fun logaut(){
+    override fun logaut() {
         mAuth.signOut()
+    }
+
+    override fun getCard() {
+        var tricks:HashMap<String,HashMap<Int,String>> = HashMap()
+        val docRef = db.collection(TRICKS_CARD)
+
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            for (document in documentSnapshot) {
+                val map:HashMap<String,HashMap<Int,String>> = document.toObject(HashMap::class.java) as HashMap<String, HashMap<Int, String>>
+
+            }
+            gameCenter.setTricksCard(tricks)
+        }
+            .addOnFailureListener { exception ->
+                Log.d("CloudFire", "get failed with ", exception)
+            }
     }
 
     companion object {
         const val TABLES: String = "tables"
+        const val TRICKS_CARD: String = "tricks"
         const val TEST_TABLE_NAME: String = "testTable"
     }
 }

@@ -6,6 +6,7 @@ import com.saymewhy.forfriend.rollerpoker.core.GameCenter
 import com.saymewhy.forfriend.rollerpoker.entity.Table
 import com.saymewhy.forfriend.rollerpoker.interfaces.MainView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity(),MainView {
 
@@ -36,6 +37,15 @@ class MainActivity : AppCompatActivity(),MainView {
 
         }
 
+    }
+
+    override fun setCard(list: LinkedList<String>) {
+        for (i in list.indices)
+        when(i) {
+            0 -> et_card_1.setText(list[i])
+            1 -> et_card_2.setText(list[i])
+            2 -> et_card_3.setText(list[i])
+        }
     }
 
     private fun startGame() {

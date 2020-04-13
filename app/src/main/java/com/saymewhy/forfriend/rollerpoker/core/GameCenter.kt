@@ -7,14 +7,16 @@ import com.saymewhy.forfriend.rollerpoker.MainActivity
 import com.saymewhy.forfriend.rollerpoker.entity.Table
 import com.saymewhy.forfriend.rollerpoker.firebase.CloudFire
 import com.saymewhy.forfriend.rollerpoker.interfaces.DB
+import com.saymewhy.forfriend.rollerpoker.interfaces.GameCenterInterface
 import java.util.*
+import kotlin.collections.HashMap
 
 
-class GameCenter(val view: MainActivity) {
+class GameCenter(val view: MainActivity):GameCenterInterface {
 
     val timer: Timer = Timer()
     lateinit var table: Table
-    val db: DB = CloudFire(view)
+    val db: DB = CloudFire(view,this)
 
 
     fun start(table: Table) {
@@ -59,6 +61,7 @@ class GameCenter(val view: MainActivity) {
 
     }
 
+
     fun startTimer() {
         timer.schedule(object : TimerTask() {
             override fun run() {
@@ -68,16 +71,35 @@ class GameCenter(val view: MainActivity) {
         }, 1, 1000)
     }
 
-    private fun startGame() {
 
+    private fun startGame() {
+        when (table.state) {
+            Table.TABLE_STATE_IN_GAME->{
+                db.getCard()
+            }
+        }
 
     }
+
 
     fun logaut() {
         db.logaut()
         val intent = Intent(view, LoginActivity::class.java)
         // start your next activity
         view.startActivity(intent)
+    }
+
+
+    override fun setTricksCard(tricks: LinkedList<HashMap<Int, String>>) {
+        when (table.state) {
+            Table.TABLE_STATE_IN_GAME->{
+                val list = LinkedList<String>()
+                list.add(tricks[0][0].toString())
+                list.add(tricks[0][1].toString())
+                list.add(tricks[0][2].toString())
+                view.setCard(list)
+            }
+        }
     }
 
 

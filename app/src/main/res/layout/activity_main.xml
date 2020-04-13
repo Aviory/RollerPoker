@@ -81,20 +81,26 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <EditText
+                android:id="@+id/et_card_1"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
+                android:inputType="none"
                 android:background="@drawable/ic_rectangle" />
 
             <EditText
+                android:id="@+id/et_card_2"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
+                android:inputType="none"
                 android:background="@drawable/ic_rectangle" />
 
             <EditText
+                android:id="@+id/et_card_3"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
+                android:inputType="none"
                 android:background="@drawable/ic_rectangle" />
         </LinearLayout>
 
